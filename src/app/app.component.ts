@@ -8,8 +8,7 @@ import { AngularFire } from 'angularfire2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  is_logged_in : boolean;
-  user : any;
+  public is_logged_in : boolean;
 
   constructor(private af : AngularFire, private router : Router) {
     let user_exists = localStorage.getItem('user');

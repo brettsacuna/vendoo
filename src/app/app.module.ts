@@ -7,16 +7,18 @@ import { AppRouting } from './configuration/app.routing';
 import { AppFirebase } from './configuration/app.firebase';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     PanelComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

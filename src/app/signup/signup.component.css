@@ -1,10 +1,10 @@
-.login-form {
-    width: 300px;
+.register-form {
+    width: 340px;
     margin: 3% auto;
 }
 
 .message {
-    width: 300px;
+    width: 340px;
     margin: 3% auto;
     margin-bottom: -2.5%;
 }
@@ -13,7 +13,7 @@
     margin: 0 !important;
 }
 
-.profile-image-login {
+.profile-image-register {
     width: 100px;
     height: 100px !important;
 }
