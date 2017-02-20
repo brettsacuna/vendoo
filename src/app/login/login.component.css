@@ -1,0 +1,19 @@
+.login-form {
+    width: 300px;
+    margin: 3% auto;
+}
+
+.message {
+    width: 300px;
+    margin: 3% auto;
+    margin-bottom: -2.5%;
+}
+
+.margin {
+    margin: 0 !important;
+}
+
+.profile-image-login {
+    width: 100px;
+    height: 100px !important;
+}
