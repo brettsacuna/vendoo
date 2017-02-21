@@ -16,7 +16,7 @@ export class PasswordResetComponent implements OnInit {
 
   constructor(private fb : FormBuilder, private router : Router) {
     this.reset_form = this.fb.group({
-      'username' : [null, Validators.required],
+      'username' : [null, Validators.compose([Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}')])],
     });
   }
 

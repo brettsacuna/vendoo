@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit {
 
   constructor(private af : AngularFire, private router : Router, private fb : FormBuilder) {
     this.login_form = this.fb.group({
-      'username' : [null, Validators.required],
+      'username' : [null, Validators.compose([Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}')])],
       'password': [null, Validators.required],
     });
   }

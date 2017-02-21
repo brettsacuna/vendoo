@@ -19,8 +19,11 @@ export class AppComponent {
     } else {
       this.af.auth.subscribe(user => {
         if (user == null) {
-          this.router.navigate(['']);
           this.is_logged_in = false;
+
+          if (this.router.url == '/panel') {
+            this.router.navigate(['']);
+          }          
 
           localStorage.removeItem('user');
         } else {

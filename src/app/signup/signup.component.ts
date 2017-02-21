@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire, AuthProviders, AuthMethods, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-signup',
@@ -14,23 +14,32 @@ export class SignupComponent implements OnInit {
   message_color : string;
   message_text : string;
 
+  users: FirebaseObjectObservable<any>;
+
   constructor(private af : AngularFire, private router : Router, private fb : FormBuilder) {
     this.register_form = this.fb.group({
       'fullname' : [null, Validators.required],
-      'username' : [null, Validators.required],
-      'password': [null, Validators.required],
-    });
+      'username' : [null, Validators.compose([Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}')])],
+      'password': [null, Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(12)])],
+    });  
   }
 
-  register(value : any) {
+  register(value : any) {    
     this.message = true;
     this.message_text = "Registring user";
     this.message_color = "blue";
 
     setTimeout(() => {
       this.af.auth.createUser({email : value.username, password : value.password}).then((data) => {
-        this.message_color = "green";
-        this.message_text = "Register successfull redirecting...";
+        let user = {"name": value.fullname, "user_Listings": "", "listing_Keys": "", "favorite_listings_keys": ""};
+
+        this.af.database.object('Users/'+data.uid).set(user).then((data) => {
+          this.message_color = "green";
+          this.message_text = "Register successfull redirecting...";
+        }).catch((error) => {
+          this.message_color = "red";
+          this.message_text = error.message;
+        });
       }).catch((error) => {
         this.message_color = "red";
         this.message_text = error.message;
