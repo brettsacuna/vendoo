@@ -11,6 +11,7 @@ import { PanelComponent } from './panel/panel.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SignupComponent } from './signup/signup.component';
     PanelComponent,
     NotfoundComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,

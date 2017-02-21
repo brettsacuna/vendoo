@@ -6,8 +6,8 @@
       <form class="register-form card-panel hoverable z-depth-2" [formGroup]="register_form" (ngSubmit)="register(register_form.value)">
           <div class="row">
               <div class="input-field col s12 center">
-                  <img src="https://angular.io/resources/images/logos/angular2/angular.svg" alt="" class="responsive-img valign profile-image-register">
-                  <p class="center register-form-text">Vendoo - Register Form</p>
+                  <img src="assets/images/vendoo.png" alt="" class="responsive-img valign profile-image-register">
+                  <p class="center register-form-text">Register Form</p>
               </div>
           </div>
           <div class="row margin">
@@ -21,7 +21,7 @@
               <div class="input-field col s12">
                   <i class="material-icons prefix">perm_identity</i>
                   <input id="icon_prefix" type="text" class="validate" [formControl]="register_form.controls['username']">
-                  <label for="icon_prefix">Username</label>
+                  <label for="icon_prefix">Email-address</label>
               </div>
           </div>
           <div class="row margin">

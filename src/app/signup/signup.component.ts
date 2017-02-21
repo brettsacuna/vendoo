@@ -23,11 +23,19 @@ export class SignupComponent implements OnInit {
   }
 
   register(value : any) {
-    this.af.auth.createUser(value.username, value.password).then((data) => {
-      console.log(data);
-    }).catch((error) => {
-      console.log(error);
-    });
+    this.message = true;
+    this.message_text = "Registring user";
+    this.message_color = "blue";
+
+    setTimeout(() => {
+      this.af.auth.createUser({email : value.username, password : value.password}).then((data) => {
+        this.message_color = "green";
+        this.message_text = "Register successfull redirecting...";
+      }).catch((error) => {
+        this.message_color = "red";
+        this.message_text = error.message;
+      });
+    }, 1000);
   }
 
   loginFacebook() {
@@ -41,7 +49,7 @@ export class SignupComponent implements OnInit {
         method: AuthMethods.Popup,
       }).then((data) => {
         this.message_color = "green";
-        this.message_text = "Login successfull redirecting...";
+        this.message_text = "Was successfully registered redirecting...";
       }).catch((error) => {
         this.message_color = "red";
         this.message_text = error.message;
